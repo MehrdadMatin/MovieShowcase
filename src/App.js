@@ -1,19 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
-import React from'react';
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-import Home from './components/Home';
-import MovieDetail from './components/MovieDetail';
-import SearchResults from './components/SearchResults';
+import React from "react";
+import "./App.css";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Home from "./components/Home";
+import SearchResults from "./components/SearchResults";
+import MovieDetail from "./components/MovieDetail";
 
 function App() {
   return (
     <Router>
-      <Switch>
-        <Route path="/" exact component={Home} />
-        <Route path="/movie/:movieId" component={MovieDetail} />
-        <Route path="/search" component={SearchResults} />
-      </Switch>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/search" element={<SearchResults />} />
+        <Route path="/movie/:id" element={<MovieDetail />} />
+      </Routes>
     </Router>
   );
 }
